@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 // const { nanoid } = require("nanoid");
 
 //  Розкоментуй і запиши значення
-  const contactsPath = path.join(__dirname, "contacts.json");
+  const contactsPath = path.join("db", "contacts.json");
  
 
 async function listContacts() {

@@ -6,7 +6,7 @@ const {
   getContactById,
   removeContact,
   addContact,
-} = require("./contacts");
+} = require("./db/contacts.json");
 
 
 program
