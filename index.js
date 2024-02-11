@@ -1,13 +1,5 @@
-// import { program } from "commander";
-const { program } = require("commander");
-
-const {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-} = require("./db/contacts.json");
-
+import * as contactsHelper from "./contacts.js";
+import { program } from "commander";
 
 program
   .option("-a, --action <type>", "choose action")
@@ -20,26 +12,25 @@ program.parse(process.argv);
 
 const options = program.opts();
 
-// TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      const contactsList = await listContacts();
+      const contactsList = await contactsHelper.listContacts();
       console.table(contactsList);
       break;
 
     case "get":
-      const getContact = await getContactById(id);
+      const getContact = await contactsHelper.getContactById(id);
       console.table(getContact);
       break;
 
     case "add":
-      const addUsers = await addContact(name, email, phone);
+      const addUsers = await contactsHelper.addContact(name, email, phone);
       console.table(addUsers);
       break;
 
     case "remove":
-          const removedContacts = await removeContact(id);
+          const removedContacts = await contactsHelper.removeContact(id);
           console.table(removedContacts);
       break;
 
